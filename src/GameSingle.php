@@ -7,12 +7,12 @@
           $randomChoice = rand(1, 3);
           $input2="";
 
-          if ($randomChoice = 1)
+          if ($randomChoice === 1)
            {
                $input2 = "rock";
            }
           elseif
-           ($randomChoice = 2)
+           ($randomChoice === 2)
            {
            $input2="paper";
            }
@@ -22,7 +22,7 @@
 
          }
          return $input2;
-         var_dump(input2);
+
       }
 
       function playGame($input1,$input2){
@@ -33,13 +33,13 @@
 
        if (($input1 == "rock" && $input2 == "scissors") | ($input1 == "paper" && $input2 == "rock") |($input1 == "scissors" && $input2 == "paper") ){
 
-           $output="Player 1";
+           $output="You Won";
         }
 
        elseif (($input1 == "scissors" && $input2 == "rock") | ($input1 == "rock" && $input2 == "paper") |($input1 == "paper" && $input2 == "scissors") )
 
        {
-           $output="Player 2";
+           $output="Computor Won";
        }
        else
        {
@@ -49,7 +49,7 @@
        }
 
           return $output;
-          var_dump($output);
+
       }
 
 
