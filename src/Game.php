@@ -3,8 +3,11 @@
 
 class Game{
 
-    function playGame($input1, $input2){
+    function playGame($input101, $input201){
 
+
+        $input1=strtolower($input101);
+        $input2=strtolower($input201);
         $output="";
 
 
