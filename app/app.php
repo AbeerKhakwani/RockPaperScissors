@@ -31,8 +31,23 @@
 
     });
 
+    $app->post('/TwoPlayer', function() use ($app) {
 
 
+            return $app['twig']->render("twoplayers.twig");
+
+    });
+
+
+    $app->post('/TwoPlayerResult', function() use ($app) {
+             $new_Game = new Game;
+             $person1_move = $_POST['input1'];
+             $person2_move= $_POST['input2'];
+             $GameResult = $new_Game->PlayGame($person1_move,$person2_move );
+
+            return $app['twig']->render("twoplayer.twig", array("result" =>$GameResult, "player1"=> $person1_move, "player2"=> $person2_move));
+
+    });
 
 
     return $app;
