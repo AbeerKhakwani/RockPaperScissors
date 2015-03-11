@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Game{
 
     function playGame($input1, $input2){
@@ -10,7 +9,7 @@ class Game{
 
 
 
-      if (($input1 == "rock" && $input2 == "scissors") | ($input1 == "paper" && $input2 == "rock") |($input1 == "scissors" && $input2 == "paper") ){
+     if (($input1 == "rock" && $input2 == "scissors") | ($input1 == "paper" && $input2 == "rock") |($input1 == "scissors" && $input2 == "paper") ){
 
          $output="Player 1";
       }
@@ -20,12 +19,10 @@ class Game{
      {
          $output="Player 2";
      }
-
-
      else
      {
          $output="Draw";
-    
+
 
      }
 
