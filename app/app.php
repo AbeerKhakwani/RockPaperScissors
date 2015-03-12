@@ -4,6 +4,10 @@
     require_once __DIR__ .'/../src/GameSingle.php';
 
 
+    session_start();
+
+
+
 
     $app = new Silex\Application();
 
@@ -50,21 +54,45 @@
     });
 
 
+
+    $app->post('/player2', function() use ($app) {
+
+            $person1_move = strtolower($_POST['input1']);
+
+            $array=array("rock","paper","scissors");
+            if((in_array($person1_move,$array)))
+            {
+            //$_SESSION['player1'] = $person1_move ;
+            $_SESSION['player1']=$person1_move;
+
+            return $app['twig']->render("secondPlayer.twig");
+
+        }
+        else{
+            return $app['twig']->render("error.twig");
+
+        }
+
+
+
+    });
+
+
+
     $app->post('/TwoPlayerResult', function() use ($app) {
 
-             $person1_move = strtolower($_POST['input1']);
              $person2_move= strtolower($_POST['input2']);
 
              $array=array("rock","paper","scissors");
 
-             if((in_array($person1_move,$array)) && (in_array($person2_move,$array)))
+             if((in_array($person2_move,$array)))
              {
 
              $new_Game = new Game;
-             $GameResult = $new_Game->PlayGame($person1_move,$person2_move );
+             $GameResult = $new_Game->PlayGame($_SESSION['player1'],$person2_move );
 
 
-            return $app['twig']->render("twoplayer.twig", array("result" =>$GameResult, "player1"=> $person1_move, "player2"=> $person2_move));
+            return $app['twig']->render("twoplayer.twig", array("result" =>$GameResult, "player1"=> $_SESSION['player1'], "player2"=> $person2_move));
           }
           else{
               return $app['twig']->render("error.twig");
